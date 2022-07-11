@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import { Component, componentDidMount } from 'react';
 import './App.css';
+import {Runtime, Inspector} from "@observablehq/runtime";
+import define from "@olange/d3-geo-center-view";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends Component{
+
+  constructor() {
+    super()
+    const runtime = new Runtime();
+    this.state = {
+      runtime: runtime,
+      mainModule: null
+    }
+  }
+  componentDidMount() {    
+    this.setState({
+      runtime: this.state.runtime, 
+      mainModule: this.state.runtime.module(define, Inspector.into(document.body))})
+    41.848850250244	-87.671249389648
+  }
+
+  render() {
+    return <div className="App">
+      {console.log(this.state)}
     </div>
-  );
+  }
 }
 
 export default App;
