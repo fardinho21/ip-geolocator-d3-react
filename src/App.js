@@ -16,12 +16,12 @@ class App extends Component{
   componentDidMount() {    
     this.setState({
       runtime: this.state.runtime, 
-      mainModule: this.state.runtime.module(define, Inspector.into(document.body))})
+      mainModule: this.state.runtime.module(define, Inspector.into(document.getElementById('obsrv-entry')))})
     41.848850250244	-87.671249389648
   }
 
   render() {
-    return <div className="App">
+    return <div className="App" id="obsrv-entry">
       {console.log(this.state)}
     </div>
   }
